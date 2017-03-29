@@ -52,23 +52,17 @@ describe("Container", function() {
             var container = docker.getContainer("f8e7ae60d3ee");
 
             function handler(err, exec) {
-
-                console.log(JSON.stringify(err));
                 console.log(JSON.stringify(exec));
-
                 exec.start(function (err, stream) {
-
-                    console.log(JSON.stringify(stream));
-                    console.log(JSON.stringify(err));
+                    console.log((stream));
 
                     exec.inspect(function (err, data) {
-
-                        console.log(JSON.stringify(err));
-                        console.log(JSON.stringify(data));
+                        console.log((data));
 
                         done();
                     });
                 });
             }
+            container.exec(options, handler);
         });
 });
